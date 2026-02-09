@@ -1,0 +1,170 @@
+/* ===== SETTINGS MODAL ===== */
+.settings-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.settings-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.settings-content {
+    background: linear-gradient(135deg, #2e1a47 0%, #1f1234 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.settings-modal.active .settings-content {
+    transform: scale(1) translateY(0);
+}
+
+.settings-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.settings-header h2 {
+    color: #ffd700;
+    margin: 0 0 10px;
+    font-size: 1.6rem;
+    font-family: 'Cinzel', serif;
+}
+
+.settings-header p {
+    color: #bca0d9;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.settings-option {
+    margin-bottom: 20px;
+}
+
+.settings-option label {
+    display: block;
+    color: #ffd700;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.response-toggle {
+    display: flex;
+    gap: 10px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: #bca0d9;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 600;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.toggle-btn.active {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.toggle-btn i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.toggle-btn span {
+    display: block;
+    font-size: 0.85rem;
+}
+
+.settings-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.settings-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.settings-btn.primary {
+    background: linear-gradient(135deg, #ffd700 0%, #e6c200 100%);
+    color: #120d1d;
+}
+
+.settings-btn.primary:hover {
+    background: linear-gradient(135deg, #e6c200 0%, #d4af00 100%);
+    transform: translateY(-2px);
+}
+
+.settings-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.settings-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.settings-info {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(255, 215, 0, 0.05);
+    border-left: 3px solid #ffd700;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    color: #bca0d9;
+}
+
+/* Mobile Settings Modal */
+@media (max-width: 480px) {
+    .settings-content {
+        padding: 20px;
+    }
+
+    .settings-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .toggle-btn i {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,115 @@
+/* Shared Global Styles for All Modules */
+
+:root {
+    --primary-gold: #d4af37;
+    --primary-purple: #4a1875;
+    --dark-bg: #1a0033;
+    --light-purple: #b8a5d4;
+    --text-light: #e6d5f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(135deg, #0a0015 0%, #1a0b2e 50%, #2e1a47 100%);
+    min-height: 100vh;
+    color: var(--text-light);
+}
+
+/* Buttons */
+.btn,
+button.btn {
+    background: linear-gradient(135deg, var(--primary-gold) 0%, #b8942c 100%);
+    color: var(--dark-bg);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn:hover,
+button.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a0033 0%, #2d0a4e 100%);
+    border: 2px solid var(--primary-gold);
+    border-radius: 15px;
+    margin: 10% auto;
+    padding: 30px;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.close {
+    color: var(--primary-gold);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--primary-gold);
+}
+
+/* Loading States */
+.loading {
+    text-align: center;
+    color: var(--light-purple);
+    padding: 20px;
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+
+    0%,
+    20% {
+        content: '.';
+    }
+
+    40% {
+        content: '..';
+    }
+
+    60%,
+    100% {
+        content: '...';
+    }
+}

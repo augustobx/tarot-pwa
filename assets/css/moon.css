@@ -1,0 +1,171 @@
+/* ===== MOON PHASE WIDGET ===== */
+
+.moon-widget {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    transition: all 0.4s ease;
+    cursor: help;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.moon-widget:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
+}
+
+.moon-icon {
+    font-size: 1.8rem;
+    animation: moonGlow 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes moonGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.9));
+        transform: scale(1.05);
+    }
+}
+
+.moon-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.moon-phase-name {
+    font-size: 0.75rem;
+    color: #ffd700;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.5px;
+}
+
+.moon-sign-badge {
+    font-size: 0.7rem;
+    color: #bca0d9;
+    background: rgba(188, 160, 217, 0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-top: 2px;
+    border: 1px solid rgba(188, 160, 217, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Chat Action Button */
+.chat-action-btn {
+    background: linear-gradient(135deg, #ffd700, #e6c200);
+    color: #1a0b2e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Lato', sans-serif;
+}
+
+.chat-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+}
+
+/* Header Grid Layout */
+header {
+    background: linear-gradient(135deg, rgba(26, 11, 46, 0.98), rgba(46, 26, 71, 0.98));
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 10px 0;
+}
+
+header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.header-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-center {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header .header-content {
+        padding: 0 15px;
+    }
+
+    .moon-phase-name {
+        display: none;
+        /* Hide text on mobile to save space */
+    }
+
+    .moon-widget {
+        padding: 5px 10px;
+        gap: 5px;
+    }
+
+    .moon-sign-badge {
+        font-size: 0.65rem;
+        padding: 0 4px;
+    }
+
+    header h1 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Stack layout on very small screens? No, keep inline but compact */
+    header .header-content {
+        gap: 5px;
+    }
+
+    .btn-text {
+        display: none;
+        /* Hide button text on mobile */
+    }
+}

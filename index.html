@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo Místico - Cargando...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .splash-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0015 0%, #1a0b2e 50%, #2e1a47 100%);
+            z-index: 10000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .splash-container.fade-out {
+            animation: fadeOut 0.8s ease forwards;
+        }
+
+        /* Fondo de estrellas animadas */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Imagen central */
+        .mystic-circle {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin-bottom: 40px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .circle-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 70%);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .mystic-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6),
+                inset 0 0 40px rgba(255, 215, 0, 0.2);
+            object-fit: cover;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Texto místico */
+        .mystic-text {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 40px;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        .mystic-text h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .mystic-text p {
+            font-size: 1rem;
+            color: #bca0d9;
+            font-style: italic;
+        }
+
+        @keyframes textGlow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+
+            50% {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1);
+            }
+        }
+
+        /* Cuenta regresiva */
+        .countdown {
+            position: relative;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 1);
+            margin-bottom: 20px;
+            animation: countdown-pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes countdown-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Barra de energía */
+        .energy-bar-container {
+            width: 300px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .energy-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #e6c200);
+            box-shadow: 0 0 15px #ffd700;
+            animation: energyFlow 3s ease-out;
+            width: 0;
+        }
+
+        @keyframes energyFlow {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Frase mística */
+        .mystic-phrase {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #9b7fc9;
+            font-style: italic;
+            text-align: center;
+            max-width: 400px;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeInText 2s ease 1s forwards;
+        }
+
+        @keyframes fadeInText {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Partículas flotantes */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: particleFloat 8s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .mystic-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle-glow {
+                width: 250px;
+                height: 250px;
+            }
+
+            .mystic-text h1 {
+                font-size: 2rem;
+            }
+
+            .countdown {
+                font-size: 3rem;
+            }
+
+            .energy-bar-container {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="splash-container" id="splash">
+        <!-- Estrellas -->
+        <div class="stars" id="stars"></div>
+
+        <!-- Partículas -->
+        <div id="particles"></div>
+
+        <!-- Círculo místico -->
+        <div class="mystic-circle">
+            <div class="circle-glow"></div>
+            <img src="assets/images/mystic_splash.jpg" alt="Oráculo Místico" class="mystic-image" id="mystic-img">
+        </div>
+
+        <!-- Texto principal -->
+        <div class="mystic-text">
+            <h1>Oráculo Místico</h1>
+            <p>Los arcanos te esperan...</p>
+        </div>
+
+        <!-- Cuenta regresiva -->
+        <div class="countdown" id="countdown">3</div>
+
+        <!-- Barra de energía -->
+        <div class="energy-bar-container">
+            <div class="energy-bar" id="energy-bar"></div>
+        </div>
+
+        <!-- Frase mística -->
+        <p class="mystic-phrase" id="mystic-phrase">
+            "El universo conspira para revelarte sus secretos"
+        </p>
+    </div>
+
+    <script>
+        // Frases místicas aleatorias
+        const mysticPhrases = [
+            "El universo conspira para revelarte sus secretos",
+            "Las estrellas se alinean para tu consulta",
+            "La energía cósmica te guía hacia la verdad",
+            "Los arcanos antiguos despiertan para ti",
+            "Tu destino se escribe en las cartas",
+            "La luna ilumina tu camino espiritual",
+            "Las fuerzas místicas convergen en este momento",
+            "El velo entre mundos se hace más fino"
+        ];
+
+        // Seleccionar frase aleatoria
+        const randomPhrase = mysticPhrases[Math.floor(Math.random() * mysticPhrases.length)];
+        document.getElementById('mystic-phrase').textContent = randomPhrase;
+
+        // Generar estrellas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Generar partículas flotantes
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Cuenta regresiva
+        let count = 3;
+        const countdownEl = document.getElementById('countdown');
+        const splashEl = document.getElementById('splash');
+
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownEl.textContent = count;
+            } else if (count === 0) {
+                countdownEl.textContent = '✨';
+            } else {
+                clearInterval(countdownInterval);
+                splashEl.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'home.php';
+                }, 800);
+            }
+        }, 1000);
+
+        // Prevenir que la imagen rota tenga error
+        document.getElementById('mystic-img').onerror = function () {
+            // Fallback a gradiente si no hay imagen
+            this.style.background = 'radial-gradient(circle, #2e1a47, #1a0b2e)';
+            this.style.border = '3px solid #ffd700';
+        };
+    </script>
+</body>
+
+</html>
